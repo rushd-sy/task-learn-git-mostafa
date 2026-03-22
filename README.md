@@ -1,1 +1,1 @@
-init repo
+.NET Class Library that converts text into a URL-friendly slug (e.g., "Hello World!" -> "hello-world").
