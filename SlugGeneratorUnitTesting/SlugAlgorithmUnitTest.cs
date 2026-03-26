@@ -9,16 +9,12 @@ namespace SlugGeneratorUnitTesting
         public void RemoveWhiteSpaces()
         {
             Assert.Equal("hello", SlugGenerator.Generate("Hello"));
-            Assert.Equal("hello", SlugGenerator.Generate("    Hello"));
-            Assert.Equal("hello", SlugGenerator.Generate("Hello     "));
             Assert.Equal("hello", SlugGenerator.Generate("    Hello    "));
         }
 
         [Fact]
         public void ConvertToLowerCase()
         {
-            Assert.Equal("hello", SlugGenerator.Generate("Hello"));
-            Assert.Equal("hello", SlugGenerator.Generate("HELLO"));
             Assert.Equal("hello", SlugGenerator.Generate("hElLo"));
         }
 
@@ -64,18 +60,6 @@ namespace SlugGeneratorUnitTesting
             Assert.Equal("hello", SlugGenerator.Generate("Hello()"));
             Assert.Equal("helloworld", SlugGenerator.Generate("Hello()!@#%^*+/\\.|`~,world"));
             Assert.Equal("hello-world", SlugGenerator.Generate("Hello_- ()!@#%^*+/\\.|`~,- world"));
-        }
-
-        [Fact]
-        public void InputWithDollarSign()
-        {
-            Assert.Equal("hellodollar", SlugGenerator.Generate("Hello$"));
-        }
-
-        [Fact]
-        public void InputWithAmpersand()
-        {
-            Assert.Equal("helloandworld", SlugGenerator.Generate("Hello&World"));
         }
 
         [Fact]

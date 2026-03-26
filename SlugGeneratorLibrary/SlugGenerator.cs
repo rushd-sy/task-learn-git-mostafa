@@ -10,9 +10,7 @@ namespace SlugGeneratorLibrary
             if (text is null)
                 throw new ArgumentNullException(nameof(text));
             text = text.Trim()
-                .ToLowerInvariant()
-                .Replace("$", "dollar")
-                .Replace("&", "and");
+                .ToLowerInvariant();
             text = Regex.Replace(text, @"[+()^*%#@!/\\.,|`~]+", string.Empty);
             text = Regex.Replace(text, @"[\s_-]+", "-");
             return text;
