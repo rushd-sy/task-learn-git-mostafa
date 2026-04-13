@@ -87,5 +87,12 @@ namespace SlugGeneratorUnitTesting
             Assert.Equal("hello.world", SlugGenerator.CustomGenerate("hello world", '.'));
             Assert.Equal("hello*world", SlugGenerator.CustomGenerate("hello world", '*'));
         }
+
+        [Fact]
+        public void UniqueSlug()
+        {
+            Assert.NotEqual(SlugGenerator.GenerateUnique("شقة في الجميلية"), 
+                SlugGenerator.GenerateUnique("شقة في الجميلية"));
+        }
     }
 }

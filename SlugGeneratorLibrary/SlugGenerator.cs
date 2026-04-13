@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
 namespace SlugGeneratorLibrary
@@ -24,6 +25,15 @@ namespace SlugGeneratorLibrary
         public static string GenerateUnderscores(string text)
         {
             return CustomGenerate(text, '_');
+        }
+
+        public static string GenerateUnique(string text)
+        {
+            // append text with current milliseconds and a random number to ensure uniqueness
+            string millisecondsText = text + '-' + DateTimeOffset.UtcNow.
+                ToUnixTimeMilliseconds().ToString() + '-' +
+                RandomNumberGenerator.GetInt32(0, 100).ToString();
+            return GenerateHyphens(millisecondsText);
         }
     }
 
