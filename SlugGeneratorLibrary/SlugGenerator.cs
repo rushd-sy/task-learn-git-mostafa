@@ -16,4 +16,12 @@ namespace SlugGeneratorLibrary
             return text;
         }
     }
+
+    public static class StringExtensions
+    {
+        public static string ToSlug(this string text)
+        {
+            return SlugGenerator.Generate(text);
+        }
+    }
 }

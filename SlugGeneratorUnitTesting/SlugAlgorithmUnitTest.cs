@@ -1,4 +1,5 @@
 ﻿using SlugGeneratorLibrary;
+using System.Net.Security;
 using Xunit;
 
 namespace SlugGeneratorUnitTesting
@@ -66,6 +67,12 @@ namespace SlugGeneratorUnitTesting
         public void InputWithArabicCharacters()
         {
             Assert.Equal("مرحبا-بالعالم", SlugGenerator.Generate("مرحبا بالعالم"));
+        }
+
+        [Fact]
+        public void SlugStringExtention()
+        {
+            Assert.Equal("hello-world", "hello world".ToSlug());
         }
     }
 }
