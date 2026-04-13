@@ -1,6 +1,4 @@
 ﻿using SlugGeneratorLibrary;
-using System.Net.Security;
-using Xunit;
 
 namespace SlugGeneratorUnitTesting
 {
@@ -70,7 +68,7 @@ namespace SlugGeneratorUnitTesting
         }
 
         [Fact]
-        public void SlugStringExtention()
+        public void SlugStringExtension()
         {
             Assert.Equal("hello-world", "hello world".ToSlug());
         }
@@ -91,8 +89,9 @@ namespace SlugGeneratorUnitTesting
         [Fact]
         public void UniqueSlug()
         {
-            Assert.NotEqual(SlugGenerator.GenerateUnique("شقة في الجميلية"), 
-                SlugGenerator.GenerateUnique("شقة في الجميلية"));
+            string input = "شقة في الجميلية";
+            Assert.NotEqual(SlugGenerator.GenerateUnique(input), 
+                SlugGenerator.GenerateUnique(input));
         }
     }
 }

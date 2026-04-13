@@ -1,6 +1,4 @@
-﻿using System;
-using System.Security.Cryptography;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace SlugGeneratorLibrary
 {
@@ -29,11 +27,11 @@ namespace SlugGeneratorLibrary
 
         public static string GenerateUnique(string text)
         {
-            // append text with current milliseconds and a random number to ensure uniqueness
-            string millisecondsText = text + '-' + DateTimeOffset.UtcNow.
-                ToUnixTimeMilliseconds().ToString() + '-' +
-                RandomNumberGenerator.GetInt32(0, 100).ToString();
-            return GenerateHyphens(millisecondsText);
+            if (text is null)
+                throw new ArgumentNullException(nameof(text));
+            // append text with a GUID-based suffix to greatly reduce collision risk
+            string uniqueText = text + '-' + Guid.NewGuid().ToString("N");
+            return GenerateHyphens(uniqueText);
         }
     }
 
