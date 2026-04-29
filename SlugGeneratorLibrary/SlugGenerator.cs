@@ -6,12 +6,11 @@ namespace SlugGeneratorLibrary
     {
         public static string CustomGenerate(string text, char separator)
         {
-            if (text is null)
-                throw new ArgumentNullException(nameof(text));
-            text = text.Trim()
-                .ToLowerInvariant();
-            text = Regex.Replace(text, @"[+()^*%#@!/\\.,|`~]+", string.Empty);
-            text = Regex.Replace(text, @"[\s_-]+", separator.ToString());
+            ArgumentNullException.ThrowIfNull(text);
+            text = Regex.Replace(text.Trim()
+                .ToLowerInvariant(), 
+                @"[+()^*%#@!/\\.,|`~]+", string.Empty);
+            text = Regex.Replace(text.Trim(), @"[\s_-]+", separator.ToString());
             return text;
         }
 
@@ -27,11 +26,12 @@ namespace SlugGeneratorLibrary
 
         public static string GenerateUnique(string text)
         {
-            if (text is null)
-                throw new ArgumentNullException(nameof(text));
+            ArgumentNullException.ThrowIfNull(text);
             // append text with a GUID-based suffix to greatly reduce collision risk
-            string uniqueText = text + '-' + Guid.NewGuid().ToString("N");
-            return GenerateHyphens(uniqueText);
+            string uniqueText = text;
+            string slugifiedText = GenerateHyphens(uniqueText);
+            slugifiedText += '-' + Guid.NewGuid().ToString("N");
+            return slugifiedText;
         }
     }
 

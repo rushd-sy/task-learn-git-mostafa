@@ -59,6 +59,7 @@ namespace SlugGeneratorUnitTesting
             Assert.Equal("hello", SlugGenerator.GenerateHyphens("Hello()"));
             Assert.Equal("helloworld", SlugGenerator.GenerateHyphens("Hello()!@#%^*+/\\.|`~,world"));
             Assert.Equal("hello-world", SlugGenerator.GenerateHyphens("Hello_- ()!@#%^*+/\\.|`~,- world"));
+            Assert.Equal("hello-world", SlugGenerator.GenerateHyphens("!@# Hello World"));
         }
 
         [Fact]
