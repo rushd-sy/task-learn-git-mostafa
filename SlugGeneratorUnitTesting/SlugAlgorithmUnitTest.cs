@@ -20,7 +20,7 @@ namespace SlugGeneratorUnitTesting
         [Fact]
         public void NullInput()
         {
-            Assert.Throws<ArgumentNullException>(() => SlugGenerator.GenerateHyphens(null));
+            Assert.Throws<ArgumentNullException>(() => SlugGenerator.GenerateHyphens(null!));
         }
 
         [Fact]
